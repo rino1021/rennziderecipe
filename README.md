@@ -1,24 +1,38 @@
-# README
+ # レンジでレシピ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+料理投稿サイト
 
-* Ruby version
+### サイトテーマ
 
-* System dependencies
+電子レンジだけを使ってできる簡単レシピを投稿する SNS
 
-* Configuration
+### テーマを選んだ理由
 
-* Database creation
+時間の無い時に簡単に作れるレシピを検索することが多く、レンジだけを使う調理法は簡単だが、幅広い料理を作れることを実感している。短時間で作れるレシピだけを共有するサイトがあったら良いと思ってこのテーマを選びました。
 
-* Database initialization
+### ターゲットユーザ
 
-* How to run the test suite
+時間はないが節約のために自炊をしたい学生や社会人
 
-* Services (job queues, cache servers, search engines, etc.)
+### 主な利用シーン
 
-* Deployment instructions
+料理のレシピ検索や投稿
 
-* ...
+## 設計書
+
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
+- 使用しない場合は、使用素材の項目を README から削除してください。
+

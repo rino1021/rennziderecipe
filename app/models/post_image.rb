@@ -3,8 +3,22 @@ class PostImage < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  validates :shop_name, presence: true
+  validates :recipe_name, presence: true
   validates :image, presence: true
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @post_image = PostImage.where("recipe_name LIKE?","#{word}")
+    elsif search == "forward_match"
+      @post_image = PostImage.where("recipe_name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @post_image = PostImage.where("recipe_name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @post_image = PostImage.where("recipe_name LIKE?","%#{word}%")
+    else
+      @post_image = PostImage.all
+    end
+  end
 
   def favorited_by?(user)
     favorites.exists?(user_id)

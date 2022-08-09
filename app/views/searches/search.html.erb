@@ -1,0 +1,30 @@
+<h2>Results index</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "User" %>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user_path(user.id) do %>
+              <%= user.name %>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <tbody>
+      <% @post_images.each do |post_image| %>
+        <tr>
+          <td><%= link_to post_image_path(post_image.id) do %>
+              <%= post_image.recipe_name %>
+              <% end %>
+          </td>
+          <%#= post_image.caption %>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

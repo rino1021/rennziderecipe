@@ -30,7 +30,7 @@ class PostImagesController < ApplicationController
  private
 
  def post_image_params
-   params.require(:post_image).permit(:shopname,:image,:caption)
+   params.require(:post_image).permit(:recipe_name,:image,:caption)
  end
 
 

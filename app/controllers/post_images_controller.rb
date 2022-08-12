@@ -15,7 +15,8 @@ class PostImagesController < ApplicationController
  end
 
  def index
-   @post_images = PostImage.page(params[:page])
+   @post_images = PostImage.all
+   @post_image = PostImage.page(params[:page])
    @user = current_user
 
  end
@@ -33,7 +34,7 @@ class PostImagesController < ApplicationController
  private
 
  def post_image_params
-   params.require(:post_image).permit(:recipe_name,:image,:caption)
+   params.require(:post_image).permit(:recipe_name,:image,:caption,)
  end
 
 

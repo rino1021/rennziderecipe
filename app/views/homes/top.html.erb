@@ -3,7 +3,16 @@
    <div class = "col-md-3"> </div>
    <div class = "col-md-3">
     <p>最新レシピ</p>
-    <%= render 'post_images/list', post_images: @post_images %>
+    <!--ユーザーの投稿一覧-->
+  <% @post_image.each do |post_image| %>
+  <p><%= post_image.user.name %><%= image_tag post_image.user.get_profile_image(50,50) %></p>
+  <%= link_to post_image_path(post_image.id) do %>
+   <%= image_tag post_image.get_image, :size =>'200x200' %>
+  <% end %>
+  <p>料理名:<%= post_image.recipe_name %></p>
+  <p>レシピ:<%= post_image.caption %></p>
+  <p><%= link_to "#{post_image.post_comments.count} コメント",post_image_path(post_image.id) %></p>
+ <% end %>
    </div>
    <div class = "col-md-3">
      <p>人気レシピ一覧</p>

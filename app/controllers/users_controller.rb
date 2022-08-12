@@ -3,6 +3,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @post_images = @user.post_images
   end
+  
+  def index
+    @user = User.find(params[:id])
+    @post_images = @user.post_images
+  end
 
   def edit
     @user = User.find(params[:id])

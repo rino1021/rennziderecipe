@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :post_images, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_post_images, through: :favorites, source: :post_image
   has_one_attached :profile_image
 
   #フォローしている
@@ -33,6 +34,10 @@ class User < ApplicationRecord
     # フォローしているか判定
     def follower?(current_user)
       followers.include?(current_user)
+    end
+
+    def favorited_by?(post_image)
+    favorites.where(post_image_id: post_image_id).exists?
     end
 
   # 検索方法分岐

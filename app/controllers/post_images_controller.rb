@@ -29,6 +29,7 @@ class PostImagesController < ApplicationController
 
  def destroy
  end
+ 
 
  #投稿データののストロングパラメータ
  private

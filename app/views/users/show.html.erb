@@ -3,11 +3,8 @@
  <div class="row">
   <div class = "col-md-3"><%= render 'users/list',user: @user,post_image: @post_image %>
    </div>
-  <div class = "col-md-5">
-   <%#= render 'users/favorites',user: @user,post_images: @user.post_images %>
-   <%=link_to"いいね一覧",favorites_user_path(@user) %>
-  </div>
-  <div class = "col-md-4">
+  <div class = "col-md-9">
+   <%= render 'users/favorites',user: @user,favorite_post_images: @favorite_post_images %>
    <!--ユーザーの投稿一覧-->
    <%= render 'post_images/list',post_images: @post_images %>
   </div>

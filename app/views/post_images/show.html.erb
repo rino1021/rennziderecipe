@@ -1,14 +1,15 @@
 <div class="container">
  <div class="row">
-  <div class = "col-md-3"> </div>
+  <div class = "col-md-3"><%= render 'users/list',user: @user,post_image: @post_image %> </div>
   <div class = "col-md-3">
    <%= image_tag @post_image.image, :size =>'200x200' %>
    <p>料理名:<%= @post_image.recipe_name %>
    <p>レシピ:<%= @post_image.caption %> </p>
-   <p><%= @post_image.user.name %><%= image_tag @post_image.user.get_profile_image(100,100) %></p>
-   <p><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+
   </div>
   <div class = "col-md-4">
+   <p><%= @post_image.user.name %><%= image_tag @post_image.user.get_profile_image(100,100) %></p>
+   <p><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
    <% if @post_image.user == current_user %>
     <%= link_to "削除",post_image_path(@post_image),method: :delete %>
    <% end %>
@@ -30,7 +31,7 @@
   <% @post_image.post_comments.each do |post_comment| %>
       <p><%= image_tag post_comment.user.get_profile_image(100,100) %></p>
       <%= post_comment.user.name %>
-      <%= post_comment.created_at.strftime('%Y%m%d') %><%= post_comment.comment %>
+      <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
       <% if post_comment.user == current_user %>
         <%= link_to "削除",post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %>
       <% end %>

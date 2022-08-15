@@ -1,4 +1,4 @@
-
+<% if @post_images.exists? %>
 <table class='table table-hover table-inverse'>
   <thead>
   <tr>
@@ -9,7 +9,7 @@
   </tr>
   </thead>
   <tbody>
-   <% @favorite_post_images.each do |post_image|%>
+   <% favorite_post_images.each do |post_image|%>
     <tr>
      <td><%= link_to post_image_path(post_image.id) do %>
           <%= image_tag post_image.get_image, :size =>'100x100' %>
@@ -23,3 +23,6 @@
     </tbody>
     <% end %>
  </table>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

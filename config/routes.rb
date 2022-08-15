@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :post_images, only: [:new, :index, :show,:edit, :update,:create,:destroy] do
     resource :favorites, only:[:create,:destroy]
     resources :post_comments, only: [:create, :destroy]
+    get :ranks
   end
   resources :users, only:[:show,:edit,:update] do
    member do

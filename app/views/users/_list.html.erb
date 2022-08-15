@@ -2,7 +2,7 @@
   <table class="table">
     <tbody>
      <tr><%= image_tag user.get_profile_image(50,50) %></tr>
-    <tr><th>name</th><th><%= user.name %></th></tr>
+    <tr><th>name</th><th><%= user.name %>さん</th></tr>
     <tr><th>introduction</th><th><%#= user.introduction %></th></tr>
     </tr>
     <tr>
@@ -16,14 +16,14 @@
    </tbody>
   </table>
   <%= link_to edit_user_path(user.id),class:"btn btn-outline-secondary btn-block" do %>
-　  <i class="fas fa-user-cog"></i>
-　  プロフィール編集
-　<% end %>
-
-  <%= link_to favorites_user_path(user.id),class:"btn btn-outline-secondary btn-block" do %>
-　 いいね一覧
+   <i class="fas fa-user-cog"></i>
+  プロフィール編集
   <% end %>
 
-　<%= link_to new_post_image_path(user.id),class:"btn btn-outline-secondary btn-block" do %>
-　レシピ投稿
+  <%= link_to favorites_user_path(user.id),class:"btn btn-outline-secondary btn-block" do %>
+  いいね一覧
+  <% end %>
+
+  <%= link_to new_post_image_path(user.id),class:"btn btn-outline-secondary btn-block" do %>
+  レシピ投稿
   <% end %>

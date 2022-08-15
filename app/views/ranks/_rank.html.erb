@@ -1,0 +1,8 @@
+<!--配列の1つ目から順に1位、２位と表示される-->
+<% @post_image_ranks.each.with_index(1) do |post_image,i| %>
+  第<%= i %>位
+  <%# @all_ranks.each.with_index(1) do |post_image, i| %>
+    第<%#= i %>位
+    <%#= render partial: "post_image", local:{ post_image: @post_images} %>
+<% end %>
+<%# end %>

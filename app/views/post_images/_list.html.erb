@@ -1,12 +1,28 @@
 <!--ユーザーの投稿一覧-->
-<% @post_images.each do |post_image| %>
-  <p><%= post_image.recipe_name %></p>
-  <%= link_to post_image_path(post_image.id) do %>
-   <%= image_tag post_image.get_image, :size =>'200x200' %>
-  <% end %>
-  <!--ユーザーネーム・ユーザー写真--->
-  <p><%= post_image.user.name %><%= image_tag post_image.user.get_profile_image(50,50) %></p>
-  <p>作り方:<%= post_image.caption %></p>
-  <p><%= link_to "#{post_image.post_comments.count} コメント",post_image_path(post_image.id) %></p>
-<% end %>
+<table class='table table-hover table-inverse'>
+  <thead>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+       <% @post_images.each do |post_image| %>
+       <tr>
+        <td>
+         <%= link_to post_image_path(post_image.id) do %>
+          <%= image_tag post_image.get_image, :size =>'200x200' %>
+         <% end %>
+        </td>
+        <td><%= post_image.recipe_name %></td>
+
+         <!--ユーザーネーム・ユーザー写真--->
+         <td><%= post_image.user.name %><%= image_tag post_image.user.get_profile_image(50,50) %></td>
+         <td>作り方:<%= post_image.caption %></td>
+         <td><%= link_to "#{post_image.post_comments.count} コメント",post_image_path(post_image.id) %></td>
+       </tr>
+       <% end %>
  <%#= paginate post_images %>

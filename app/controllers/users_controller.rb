@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @post_images = @user.post_images
   end
-  
+
   def index
     @user = User.find(params[:id])
     @post_images = @user.post_images
@@ -17,6 +17,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path
+  end
+
+  def favorites
+    @user = User.find(params[:id])
+    favorites= Favorite.where(user_id: @user.id).pluck(:post_image_id)
+    @favorite_post_images = PostImage.find(favorites)
   end
 
   private

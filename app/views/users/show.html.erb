@@ -1,18 +1,15 @@
 <!--ユーザーの詳細-->
 <div class="container">
  <div class="row">
-  <div class = "col-md-3"> </div>
-  <div class = "col-md-6">
-   <table class='table'>
-   <th><%= @user.name %></th>
-   <th><%= image_tag @user.get_profile_image(100,100) %></th>
-     <% if @user == current_user %>
-     <th><%= link_to "プロフィール編集",edit_user_path %></th>
-     <% end %>
-     </div>
-
-  </table>
-  <div class = "col-md-3">
-  <!--ユーザーの投稿一覧-->
-  <%= render 'post_images/list',post_images: @post_images %>
+  <div class = "col-md-3"><%= render 'users/list',user: @user,post_image: @post_image %>
+   </div>
+  <div class = "col-md-5">
+   <%#= render 'users/favorites',user: @user,post_images: @user.post_images %>
+   <%=link_to"いいね一覧",favorites_user_path(@user) %>
   </div>
+  <div class = "col-md-4">
+   <!--ユーザーの投稿一覧-->
+   <%= render 'post_images/list',post_images: @post_images %>
+  </div>
+  </div>
+ </div>

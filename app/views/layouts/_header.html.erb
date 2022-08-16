@@ -8,25 +8,29 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-        <%= link_to "レンジでレシピ",root_path, class: 'nav-link text-dark' %>
+        <%= link_to "レンジdeレシピ",root_path, class: 'nav-link text-dark' %>
         <!--検索機能-->
         <%= render 'layouts/search' %>
 
-        <%= link_to "レシピ一覧",post_images_path, class: 'nav-link text-dark' %>
+
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
 
         <% if user_signed_in? %>
+          <%= link_to "Recipe",post_images_path, class: 'nav-link text-dark' %>
 
-          <%= link_to "投稿フォーム",new_post_image_path, class: 'nav-link text-dark' %>
+          <%= link_to "User",users_path, class: 'nav-link text-dark' %>
 
-          <%= link_to "マイページ",user_path(current_user.id), class: 'nav-link text-dark' %>
+          <%= link_to "Post",new_post_image_path, class: 'nav-link text-dark' %>
 
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+          <%= link_to "Mypage",user_path(current_user.id), class: 'nav-link text-dark' %>
+
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
 
         <% else %>
 
-          <%= link_to "新規登録",new_user_registration_path, class: 'nav-link text-dark' %>
+          <%= link_to "Sign up",new_user_registration_path, class: 'nav-link text-dark' %>
 
-          <%= link_to "ログイン",new_user_session_path, class: 'nav-link text-dark' %>
+          <%= link_to "Login",new_user_session_path, class: 'nav-link text-dark' %>
 
         <% end %>
     </div>

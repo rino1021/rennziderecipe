@@ -10,8 +10,11 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:id])
-    @post_images = @user.post_images
+    @post_image = PostImage.new
+    @user = current_user
+    @users = User.all
+    #@user = User.find(params[:id])
+    @post_images = current_user.post_images
   end
 
   def edit

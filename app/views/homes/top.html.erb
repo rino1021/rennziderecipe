@@ -1,13 +1,22 @@
 <div class="container">
   <div class="row">
    <div class = "col-md-3">
+    <% if user_signed_in? %>
     <%= render 'users/list', user: @user,post_image: @post_image %>
+    <% else %>
+    <% end %>
    </div>
   <div class = "col-md-9">
-   <p>最新レシピ</p>
+
     <!--ユーザーの投稿一覧-->
+
+    <% if user_signed_in? %>
+    <p>Ranking</p>
+   <%= render 'ranks/rank',rank: @post_image_favorite_ranks,post_image: @post_images %>
    <%= render 'post_images/list' %>
-   <%#= render 'ranks/rank',rank: @post_image_favorite_ranks,post_image: @post_images %>
+   <% else %>
+   <% end %>
+
    </div>
   </div>
 </div>

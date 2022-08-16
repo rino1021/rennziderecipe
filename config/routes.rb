@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  #devise_for :users
+  devise_for :users, controllers: {registrations: 'users/registrations'}
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
   root :to => 'homes#top'
   resources :post_images, only: [:new, :index, :show,:edit, :update,:create,:destroy] do
     resource :favorites, only:[:create,:destroy]
     resources :post_comments, only: [:create, :destroy]
     get :ranks
   end
-  resources :users, only:[:show,:edit,:update] do
+  resources :users, only:[:show,:index,:edit,:update] do
    member do
       get :favorites
    end

@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+
+
   # フォローしたときの処理
     def follow(user_id)
       relationships.create!(followed_id: user_id)
@@ -36,8 +38,15 @@ class User < ApplicationRecord
       followers.include?(current_user)
     end
 
+    def own?(object)
+    id == object.user_id
+    end
+
     def favorited_by?(post_image)
-    favorites.where(post_image_id: post_image_id).exists?
+      #if post_image_id == current_user.post_image_id
+      favorites.where(post_image_id: post_image_id).exists?
+      #else
+      #end
     end
 
   # 検索方法分岐
@@ -61,5 +70,13 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpeg')
     end
       profile_image.variant(resize_to_limit: [100,100]).processed
+  end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
+    end
   end
 end

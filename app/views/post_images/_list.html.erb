@@ -24,6 +24,8 @@
          <td>作り方:<%= post_image.caption %></td>
                               <%# byebug %>
          <td><% if current_user.own?(post_image) %>
+              <%#= link_to "削除",post_image_path(@post_image_id),method: :delete %>
+              ♥<%= post_image.favorites.count %>いいね
              <% else %>
               <% if post_image.favorited_by?(current_user) %>
               <%= link_to post_image_favorites_path(post_image),method: :delete do %>

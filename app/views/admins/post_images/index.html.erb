@@ -18,7 +18,7 @@
        <% @post_images.each do |post_image| %>
        <tr>
         <td>
-         <%= link_to post_image_path(post_image.id) do %>
+         <%= link_to admins_post_image_path(post_image.id) do %>
           <%= image_tag post_image.get_image, :size =>'100x100' %>
          <% end %>
         </td>
@@ -32,9 +32,9 @@
               <%#= post_image.favorites.count %>
              <%# else %>
               <%# if post_image.favorited_by?(current_user) %>
-              <%= link_to post_image_favorites_path(post_image) do %>
+              <%#= link_to post_image_favorites_path(post_image) do %>
                ♥<%= post_image.favorites.count %>いいね
-              <% end %>
+              <%# end %>
 
               <%# else %>
              <%#= link_to post_image_favorites_path(post_image),method: :post do %>
@@ -43,7 +43,7 @@
 
            <%# end %>
          </td>
-         <td><%= link_to "#{post_image.post_comments.count} コメント",post_image_path(post_image.id) %></td>
+         <td><%= link_to "#{post_image.post_comments.count} コメント",admins_post_image_path(post_image.id) %></td>
          <td><%#= link_to "削除",admins_post_image_path(@post_image.id),method: :delete %></td>
        </tr>
        <% end %>

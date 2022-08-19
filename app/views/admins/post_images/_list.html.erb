@@ -1,0 +1,46 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+   <tr>
+     <th>投稿一覧</th>
+     <th></th>
+     <th></th>
+     <th></th>
+     <th></th>
+     <th></th>
+    </tr>
+   </thead>
+    <tbody>
+       <% @post_images.each do |post_image| %>
+       <tr>
+        <td>
+         <%= link_to post_image_path(post_image.id) do %>
+          <%= image_tag post_image.get_image, :size =>'100x100' %>
+         <% end %>
+        </td>
+        <td><%= post_image.recipe_name %></td>
+         <!--ユーザーネーム・ユーザー写真--->
+         <td><%= post_image.user.name %><%= image_tag post_image.user.get_profile_image(50,50) %></td>
+         <td>作り方:<%= post_image.caption %></td>
+                              <%# byebug %>
+         <td><% if current_user.own?(post_image) %>
+              <%#= link_to "削除",post_image_path(@post_image_id),method: :delete %>
+              ♥<%= post_image.favorites.count %>いいね
+             <% else %>
+              <% if post_image.favorited_by?(current_user) %>
+              <%= link_to post_image_favorites_path(post_image),method: :delete do %>
+               ♥<%= post_image.favorites.count %>いいね
+              <% end %>
+
+              <% else %>
+             　<%= link_to post_image_favorites_path(post_image),method: :post do %>
+               ♡<%= post_image.favorites.count %>いいね
+            　<% end %>
+           　　<% end %>
+           　<% end %>
+         </td>
+         <td><%= link_to "#{post_image.post_comments.count} コメント",post_image_path(post_image.id) %></td>
+       </tr>
+       <% end %>
+     </table>
+    </tbody>
+ <%#= paginate post_images %>

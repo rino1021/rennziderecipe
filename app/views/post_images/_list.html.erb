@@ -34,13 +34,17 @@
               <% end %>
 
               <% else %>
-             　<%= link_to post_image_favorites_path(post_image),method: :post do %>
+             <%= link_to post_image_favorites_path(post_image),method: :post do %>
                ♡<%= post_image.favorites.count %>いいね
-            　<% end %>
-           　　<% end %>
-           　<% end %>
+            <% end %>
+           <% end %>
+           <% end %>
          </td>
-         <td><%= link_to "#{post_image.post_comments.count} コメント",post_image_path(post_image.id) %></td>
+         <td><%= link_to "#{post_image.post_comments.count} コメント",post_image_path(post_image.id) %>
+         <%# if current_user.admin? && !current_user?(user) %>
+
+         <%# end %>
+         </td>
        </tr>
        <% end %>
      </table>

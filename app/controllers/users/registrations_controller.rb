@@ -1,4 +1,4 @@
-class Users::RegistrationsController < ApplicationController
+class Users::RegistrationsController < Devise::RegistrationsController
   before_action :ensure_normal_user, only: :destroy
 
   def ensure_normal_user
@@ -6,4 +6,9 @@ class Users::RegistrationsController < ApplicationController
       redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
     end
   end
+  def after_sign_up_path_for(resource)
+    root_path(resource)
+  end
+
+
 end

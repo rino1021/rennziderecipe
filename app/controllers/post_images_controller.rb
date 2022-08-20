@@ -27,6 +27,28 @@ class PostImagesController < ApplicationController
    @user =@post_image.user
  end
 
+  def edit
+      @post_image = PostImage.find(params[:id])
+    if@post_image.user.id == current_user.id
+       render "edit"
+    else
+       redirect_to post_images_path
+
+    end
+  end
+
+   def update
+    @post_image =PostImage.find(params[:id])
+    @post_image.update(post_image_params)
+
+    if @post_image.update(post_image_params)
+     redirect_to post_image_path(@post_image), notice:"Recipe was successfully updated."
+    else
+      render :edit
+    end
+   end
+
+
  def destroy
   #PostImage.find(params[:id]).destroy
   #redirect_to post_images_path

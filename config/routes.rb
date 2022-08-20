@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   #scope module: :users do
   #namespace :users do
   root :to => 'homes#top'
+  #get "/home/top" => "homes#top"
   resources :post_images, only: [:new, :index, :show,:edit, :update,:create,:destroy] do
     resource :favorites, only:[:create,:destroy]
     resources :post_comments, only: [:create, :destroy]

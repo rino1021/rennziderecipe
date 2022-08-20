@@ -1,6 +1,6 @@
 <div class="container">
  <div class="row">
-  <div class = "col-md-3"><%= render 'users/list',user: @user,post_image: @post_image %> </div>
+  <div class = "col-md-3"><%#= render 'users/list',user: @user,post_image: @post_image %> </div>
   <div class = "col-md-3">
    <%= image_tag @post_image.image, :size =>'200x200' %>
    <p>料理名:<%= @post_image.recipe_name %>
@@ -12,7 +12,9 @@
    <p><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
    <%# if @post_image.user == current_user %>
    <%# elsif @post_image.user == admin %>
-    <%#= link_to "削除",post_image_path(@post_image.id),method: :delete %>
+   <% if current_user.admin? %>
+    <%#= link_to "管理者が削除するよ", tweet_path(t.id), method: :delete %>
+    <%= link_to "削除",post_image_path(@post_image.id),method: :delete %>
    <%# end %>
    ♥<%= @post_image.favorites.count %>いいね
   <%# end %>

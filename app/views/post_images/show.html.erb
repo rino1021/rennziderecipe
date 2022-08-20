@@ -12,7 +12,8 @@
    <p><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
    <% if @post_image.user == current_user %>
    <%# elsif @post_image.user == admin %>
-    <%#= link_to "削除",post_image_path(@post_image.id),method: :delete %>
+    <%= link_to "削除",post_image_path(@post_image.id),method: :delete %>
+    <%= link_to "編集",edit_post_image_path(@post_image.id) %>
    <% end %>
 
    <%#= render 'relationships/relationship' %>

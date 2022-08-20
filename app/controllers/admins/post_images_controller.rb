@@ -19,5 +19,10 @@ class Admins::PostImagesController < ApplicationController
   redirect_to post_images_path  # 投稿一覧画面へリダイレクト
   end
 
+  　private
+  　　def if_not_admin
+    　　redirect_to root_path unless current_user.admin?
+  　　end
+
 
 end

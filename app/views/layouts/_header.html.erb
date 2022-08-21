@@ -27,6 +27,9 @@
 
         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
 
+        <%= link_to '退会', user_registration_path, method: :delete,class: 'nav-link text-dark', data: { confirm: "アカウントを削除してもよろしいですか？" } %>
+
+
         <% elsif admin_signed_in? %>
         <%= link_to "Admin Log out", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>
 

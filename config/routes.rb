@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
     get :ranks
   end
-  resources :users, only:[:show,:index,:edit,:update] do
+  resources :users, only:[:show,:index,:edit,:update,:destroy] do
    member do
       get :favorites
    end

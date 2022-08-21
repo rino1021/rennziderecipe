@@ -32,6 +32,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+     @user = User.find(params[:id])
+     @user.destroy  # データ（レコード）を削除
+  end
+
   def favorites
     @user = User.find(params[:id])
     favorites= Favorite.where(user_id: @user.id).pluck(:post_image_id)

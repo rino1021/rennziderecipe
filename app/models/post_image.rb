@@ -4,8 +4,11 @@ class PostImage < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
-  validates :recipe_name, presence: true
+  validates :recipe_name, presence: true, uniqueness: true
   validates :image, presence: true
+  validates :caption, presence: true, uniqueness: true
+  validates :ingredients, presence: true, uniqueness: true
+
 
   def self.looks(search, word)
     if search == "perfect_match"
@@ -25,13 +28,13 @@ class PostImage < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def get_image
-    if image.attached?
-      image
-    else
-      'no_image.jpg'
-    end
-  end
+  # def get_image
+  #   if image.attached?
+  #     image
+  #   else
+  #     'no_image.jpg'
+  #   end
+  # end
 
   def get_image
     unless image.attached?

@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     @post_image = PostImage.new
     @user = current_user
     @users = User.all
+    p '-----'
+    p current_user
     #@user = User.find(params[:id])
     @post_images = current_user.post_images
   end
@@ -34,7 +36,10 @@ class UsersController < ApplicationController
 
   def destroy
      @user = User.find(params[:id])
-     @user.destroy  # データ（レコード）を削除
+     if @user.destroy
+       redirect_to users_path# データ（レコード）を削除
+     else
+     end
   end
 
   def favorites
@@ -47,6 +52,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:name,:profile_image,:introduction)
   end
 end

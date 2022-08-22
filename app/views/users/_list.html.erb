@@ -3,7 +3,7 @@
     <tbody>
      <tr><%= image_tag user.get_profile_image(50,50) %></tr>
     <tr><th>name</th><th><%= user.name %>さん</th></tr>
-    <tr><th>introduction</th><th><%#= user.introduction %></th></tr>
+    <tr><th>introduction</th><th><%= user.introduction %></th></tr>
     </tr>
     <tr>
     <th>follows</th>
@@ -24,6 +24,6 @@
   いいね一覧
   <% end %>
 
-  <%= link_to new_post_image_path(user.id),class:"btn btn-outline-secondary btn-block" do %>
+  <%= link_to new_post_image_path,class:"btn btn-outline-secondary btn-block" do %>
   レシピ投稿
   <% end %>

@@ -24,21 +24,8 @@
          <td><%= post_image.user.name %><%= image_tag post_image.user.get_profile_image(50,50) %></td>
          <td>作り方:<%= post_image.caption %></td>
                               <%# byebug %>
-         <td><% if current_user.own?(post_image) %>
-              <%#= link_to "削除",post_image_path(@post_image_id),method: :delete %>
-              ♥<%= post_image.favorites.count %>いいね
-             <% else %>
-              <% if post_image.favorited_by?(current_user) %>
-              <%= link_to post_image_favorites_path(post_image),method: :delete do %>
-               ♥<%= post_image.favorites.count %>いいね
-              <% end %>
-
-              <% else %>
-             <%= link_to post_image_favorites_path(post_image),method: :post do %>
-               ♡<%= post_image.favorites.count %>いいね
-            <% end %>
-           <% end %>
-           <% end %>
+         <td>
+          <div id="favorite_btn_<%= post_image.id %>"><%= render partial: 'favorites/favorite',locals: {post_image: post_image} %></div>
          </td>
          <td><%= link_to "#{post_image.post_comments.count} コメント",post_image_path(post_image.id) %>
          <%# if current_user.admin? && !current_user?(user) %>

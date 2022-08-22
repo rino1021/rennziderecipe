@@ -10,6 +10,13 @@ class User < ApplicationRecord
   has_many :favorited_post_images, through: :favorites, source: :post_image
   has_one_attached :profile_image
 
+
+
+  validates :introduction, length: { maximum: 50 }
+
+
+
+
   #フォローしている
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
                                                                      #自分
@@ -38,8 +45,8 @@ class User < ApplicationRecord
       followers.include?(current_user)
     end
 
-    def own?(object)
-    id == object.user_id
+    def own?(user_id)
+      id == user_id
     end
 
     def favorited_by?(post_image)

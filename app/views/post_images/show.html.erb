@@ -10,10 +10,13 @@
   <div class = "col-md-4">
    <p><%#= @post_image.user.name %><%#= image_tag @post_image.user.get_profile_image(100,100) %></p>
    <p><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
-   <% if @post_image.user == current_user %>
-   <%# elsif @post_image.user == admin %>
+    <% if @post_image.user == current_user %>
     <%= link_to "削除",post_image_path(@post_image.id),method: :delete %>
     <%= link_to "編集",edit_post_image_path(@post_image.id) %>
+    <% elsif current_user.admin? && !(current_user == @user) %>
+    <%= link_to "削除",post_image_path(@post_image.id),method: :delete %>
+    <%= link_to "編集",edit_post_image_path(@post_image.id) %>
+    <% else %>
    <% end %>
 
    <%#= render 'relationships/relationship' %>
@@ -38,8 +41,10 @@
       <%= post_comment.user.name %>
       <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
       <% if post_comment.user == current_user %>
-      <%# if current_user.admin? && !(current_user == user) %>
       <%= link_to "削除",post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %>
+      <% elsif current_user.admin? && !(current_user == @user) %>
+      <%= link_to "削除",post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %>
+      <% else %>
       <% end %>
   <% end %>
 

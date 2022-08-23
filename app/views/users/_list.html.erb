@@ -21,9 +21,11 @@
   <% end %>
 
   <%= link_to favorites_user_path(user.id),class:"btn btn-outline-secondary btn-block" do %>
+  <i class="fas fa-heart"></i>
   いいね一覧
   <% end %>
 
   <%= link_to new_post_image_path,class:"btn btn-outline-secondary btn-block" do %>
+  <i class="fas fa-pen"></i>
   レシピ投稿
   <% end %>

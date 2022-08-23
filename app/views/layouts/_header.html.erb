@@ -11,7 +11,9 @@
 
         <% if user_signed_in? %>
 
-        <%= link_to "レンジdeレシピ",root_path, class: 'nav-link text-dark' %>
+        <%= link_to root_path, class: 'nav-link text-dark' do %>
+         レンジdeレシピ
+        <% end %>
         <!--検索機能-->
         <%= render 'layouts/search' %>
 
@@ -34,16 +36,15 @@
         <%= link_to "Admin Log out", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>
 
         <% else %>
-
-        <%= link_to 'AdminLogin', new_admin_session_path, class: 'nav-link text-dark' %>
+        <%= link_to 'レンジdeレシピ', users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
 
         <%= link_to 'Guest', users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
-
-        <%= link_to "Recipe",post_images_path, class: 'nav-link text-dark' %>
 
         <%= link_to "Sign up",new_user_registration_path, class: 'nav-link text-dark' %>
 
         <%= link_to "Login",new_user_session_path, class: 'nav-link text-dark' %>
+
+         <%= link_to 'AdminLogin', new_admin_session_path, class: 'nav-link text-dark' %>
 
         <% end %>
 

@@ -3,7 +3,7 @@
   <div class = "col-md-3"><%= render 'users/list',user: @user,post_image: @post_image %> </div>
   <div class = "col-md-3">
    <%= image_tag @post_image.image, :size =>'200x200' %>
-   <p>料理名:<%= @post_image.recipe_name %>
+   <p><%= @post_image.recipe_name %>
    <p>材料:<%= @post_image.ingredients %></p>
    <p>レシピ:<%= @post_image.caption %> </p>
 
@@ -24,7 +24,7 @@
    <%#= render 'favorites/favorite' %>
    <div id="favorite_btn_<%= @post_image.id %>"><%= render partial: 'favorites/favorite',locals: {post_image: @post_image} %></div>
 
-  <p>コメント件数:<%= @post_image.post_comments.count %></p>
+  <p><%= @post_image.post_comments.count %>コメント</p>
   <% @post_image.post_comments.each do |post_comment| %>
       <p><%= image_tag post_comment.user.get_profile_image(10,10) %>
       <%= post_comment.user.name %>
@@ -40,7 +40,7 @@
 
    <div><%= form_with model:[@post_image, @post_comment] do |f| %>
     <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
+    <%= f.submit "投稿" %>
    <% end %>
    </div>
 

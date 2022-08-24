@@ -8,16 +8,10 @@
 
   </div>
   <div class = "col-md-4">
-   <p><%#= @post_image.user.name %><%#= image_tag @post_image.user.get_profile_image(100,100) %></p>
    <p><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
-   <%# if @post_image.user == current_user %>
-   <%# elsif @post_image.user == admin %>
-   <% if current_user.admin? %>
-    <%#= link_to "管理者が削除するよ", tweet_path(t.id), method: :delete %>
     <%= link_to "削除",post_image_path(@post_image.id),method: :delete %>
-   <%# end %>
-   ♥<%= @post_image.favorites.count %>いいね
-  <%# end %>
+    ♥<%= @post_image.favorites.count %>いいね
+
 
   <p>コメント件数:<%= @post_image.post_comments.count %></p>
   <% @post_image.post_comments.each do |post_comment| %>
@@ -28,9 +22,10 @@
       <%= link_to "削除",post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %>
       <% end %>
   <% end %>
+  <div>
 
 
-   <div><%= form_with model:[@post_image, @post_comment] do |f| %>
+   <%= form_with model:[@post_image, @post_comment] do |f| %>
     <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %></div>
     <%= f.submit "送信する" %>
    <% end %>

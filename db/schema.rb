@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2022_08_24_074502) do
 
   create_table "ingredients", force: :cascade do |t|
     t.integer "post_image_id", null: false
-    t.string "ingredients"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_image_id"], name: "index_ingredients_on_post_image_id"

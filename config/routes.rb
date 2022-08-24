@@ -3,9 +3,9 @@ Rails.application.routes.draw do
    devise_for :admins, controllers: {sessions: 'admins/sessions'}
    namespace :admins do
    get "/home/top" => "homes#top"
-   resources :post_images, only: [:new, :index, :show,:edit, :update,:create,:destroy] do
-   resources :post_comments, only: [:index, :create, :destroy]
-   end
+      resources :post_images, only: [:new, :index, :show,:edit, :update,:create,:destroy] do
+       resources :post_comments, only: [:index, :create, :destroy]
+      end
    resources :users, only:[:show,:index,:edit,:update]
 
    end

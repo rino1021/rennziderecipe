@@ -27,8 +27,8 @@ gem 'kaminari','~> 1.2.1'
 # gem 'image_processing', '~> 1.2'
 gem 'devise'
 gem 'jquery-rails'
-#gem 'cocoon'
-gem 'nested_form_fields'
+gem 'cocoon'
+
 gem 'activestorage-validator'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

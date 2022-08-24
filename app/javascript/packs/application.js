@@ -6,8 +6,10 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+//= require cocoon
 
-//= require nested_form_field
+
+
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -19,6 +21,8 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+
+require("@nathanvda/cocoon")
 
 Rails.start()
 Turbolinks.start()

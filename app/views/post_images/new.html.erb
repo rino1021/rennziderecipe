@@ -1,7 +1,7 @@
 <div class="container">
  <div class="row">
   <div class = "col-md-3"> </div>
-  <div class = "col-md-6">
+  <div class = "col-md-9">
    <h1>レシピ投稿フォーム</h1>
 
  <% if @post_image.errors.any? %>
@@ -15,27 +15,10 @@
 
   <%= form_with model: @post_image do |form| %>
     <h4>画像</h4>
-      <%= form.file_field :image, accept: "image/*" %>
+      <p><%= form.file_field :image, accept: "image/*" %></p>
     <h4>料理名</h4>
-      <%= form.text_field :recipe_name %>
-       <%# 詳しいオプション : https://github.com/nathanvda/cocoon#link_to_add_association %>
-  <%#= link_to_add_association '材料の追加',
-                              # form_withのformタグ変数
-                              f,
-                              # フォームのデータを追加するモデル名
-                              :ingredients,
-                              # 追加するフォームの部分テンプレート
-                              partial: "ingredient_fields",
-                              # オプション
-                              data: {
-                                # フォームを追加する場所の指定
-                                association_insertion_node: '#ingredient-forms',
-                                # フォームを前後どの位置に追加するか。(初期値: before)
-                                association_insertion_method: 'after'
-                              },
-                              form_name: "f"
+      <p><%= form.text_field :recipe_name %></p>
 
-  %>
   <div id="ingredient-forms" >
     <%= form.fields_for :ingredients do |ingredient| %>
       <% render 'ingredient_fields', f: ingredient %>
@@ -47,8 +30,8 @@
         <%= link_to_add_association form, :ingredients, data: {
         association_insertion_node: '#ingredient-forms',
         association_insertion_method: 'append' } do %>
-          <button class="btn btn-success text-center" >
-            <i class="nav-icon fas fa-tasks"></i> 案件を追加
+          <button class="btn btn-success" >
+            <i class="nav-icon fas fa-tasks"></i> 追加
           </button>
         <% end %>
      </div>
@@ -61,6 +44,6 @@
   <% end %>
 
   </div>
-  <div class = "col-md-3"></div>
+
 </div>
 </div>

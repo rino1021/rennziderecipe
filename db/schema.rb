@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_21_054832) do
+ActiveRecord::Schema.define(version: 2022_08_24_074502) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2022_08_21_054832) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "captions", force: :cascade do |t|
+    t.integer "post_image_id", null: false
+    t.text "caption"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_image_id"], name: "index_captions_on_post_image_id"
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "post_image_id", null: false
@@ -60,6 +68,14 @@ ActiveRecord::Schema.define(version: 2022_08_21_054832) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_image_id"], name: "index_favorites_on_post_image_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.integer "post_image_id", null: false
+    t.string "ingredients"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_image_id"], name: "index_ingredients_on_post_image_id"
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -102,12 +118,16 @@ ActiveRecord::Schema.define(version: 2022_08_21_054832) do
     t.string "introduction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
+    t.datetime "deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "captions", "post_images"
   add_foreign_key "favorites", "post_images"
   add_foreign_key "favorites", "users"
+  add_foreign_key "ingredients", "post_images"
 end

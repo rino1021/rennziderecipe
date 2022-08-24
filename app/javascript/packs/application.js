@@ -6,7 +6,8 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-//= require cocoon
+
+//= require nested_form_field
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"

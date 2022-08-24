@@ -1,6 +1,8 @@
 class PostImagesController < ApplicationController
   def new
     @post_image = PostImage.new
+    @ingredients = @post_image.ingredients.build ##親モデル.子モデル.buildで子モデルのインスタンス作成
+    @captions = @post_image.captions.build
   end
 
  #投稿データの保存
@@ -63,7 +65,7 @@ class PostImagesController < ApplicationController
  private
 
  def post_image_params
-   params.require(:post_image).permit(:recipe_name,:image,:caption,:ingredients)
+   params.require(:post_image).permit(:recipe_name,:image,ingredients_attributes: [:ingredients,:_destroy],captions_attributes:[:captions, :_destroy])
  end
 
 

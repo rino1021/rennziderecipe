@@ -3,7 +3,7 @@ Admin.create(
    password: 'testtest'
 )
 
-User.create!(username:  "管理者",
+User.create!(name:  "管理者",
              email: "admin@admin",
              password:  "testtest",
              password_confirmation: "testtest",

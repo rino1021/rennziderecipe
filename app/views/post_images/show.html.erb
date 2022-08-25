@@ -4,8 +4,13 @@
   <div class = "col-md-3">
    <%= image_tag @post_image.image, :size =>'200x200' %>
    <p><%= @post_image.recipe_name %></p>
-   <p>材料:<%= @post_image.ingredient %></p>
-   <p>作り方:<%= @post_image.caption %></p>
+   
+   <% @post_image.ingredients.each do |ingredient| %>
+     <p><%= ingredient.name %></p>
+   <% end %>
+
+   <p>材料:<%#= @post_image.ingredient %></p>
+   <p>作り方:<%#= @post_image.caption %></p>
 
   </div>
   <div class = "col-md-4">

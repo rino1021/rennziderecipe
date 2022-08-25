@@ -65,7 +65,7 @@ class PostImagesController < ApplicationController
  private
 
  def post_image_params
-   params.require(:post_image).permit(:recipe_name,:image,ingredients_attributes: [:name,:_destroy],captions_attributes:[:captions, :_destroy])
+   params.require(:post_image).permit(:recipe_name,:image,ingredients_attributes: [:name,:_destroy],captions_attributes:[:caption, :_destroy])
  end
 
 

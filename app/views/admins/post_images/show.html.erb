@@ -3,8 +3,15 @@
   <div class = "col-md-3"><%#= render 'users/list',user: @user,post_image: @post_image %> </div>
   <div class = "col-md-3">
    <%= image_tag @post_image.image, :size =>'200x200' %>
-   <p>料理名:<%= @post_image.recipe_name %>
-   <p>レシピ:<%= @post_image.caption %> </p>
+   <p>料理名:<%= @post_image.recipe_name %></p>
+   <% p "------------" %>
+   <% p "------------" %>
+   <% p @post_image  %>
+   <% p "------------" %>
+   <% p "------------" %>
+
+   <p>材料:<%= @post_image.ingredient %></p>
+   <p>作り方:<%= @post_image.caption %> </p>
 
   </div>
   <div class = "col-md-4">

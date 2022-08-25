@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_24_074502) do
+ActiveRecord::Schema.define(version: 2022_08_25_113321) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2022_08_24_074502) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "recipe_name"
     t.text "caption"
-    t.string "ingredients"
+    t.string "ingredient"
     t.integer "user_id"
   end
 

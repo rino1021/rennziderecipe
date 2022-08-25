@@ -3,9 +3,9 @@
   <div class = "col-md-3"><%= render 'users/list',user: @user,post_image: @post_image %> </div>
   <div class = "col-md-3">
    <%= image_tag @post_image.image, :size =>'200x200' %>
-   <p><%= @post_image.recipe_name %>
-   <p>材料:<%= @post_image.ingredients %></p>
-   <p>レシピ:<%= @post_image.caption %> </p>
+   <p><%= @post_image.recipe_name %></p>
+   <p>材料:<%= @post_image.ingredient %></p>
+   <p>作り方:<%= @post_image.caption %></p>
 
   </div>
   <div class = "col-md-4">

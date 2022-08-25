@@ -6,10 +6,10 @@ class PostImage < ApplicationRecord
   has_many :favorited_users, through: :favorites, source: :user
   has_many :ingredients, dependent: :destroy
   has_many :captions, dependent: :destroy
-  accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
-  validates :recipe_name, presence: true, uniqueness: true
+  accepts_nested_attributes_for :ingredients,:captions, reject_if: :all_blank, allow_destroy: true
+  validates :recipe_name, presence: true
   validates :image, presence: true
-  #validates :caption, presence: true, uniqueness: true
+  #validates :caption, presence: true
 
 
   def self.looks(search, word)

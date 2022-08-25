@@ -18,12 +18,12 @@
       <p><%= form.file_field :image, accept: "image/*" %></p>
     <h4>料理名</h4>
       <p><%= form.text_field :recipe_name %></p>
-
-  <div id="ingredient-forms" >
-    <%= form.fields_for :ingredients do |ingredient| %>
-      <% render 'ingredient_fields', f: ingredient %>
-    <% end %>
-  </div>
+    <h4>材料</h4>
+      <div id="ingredient-forms">
+        <%= form.fields_for :ingredients do |ingredient| %>
+          <% render 'ingredient_fields', f: ingredient %>
+        <% end %>
+      </div>
 
   <div class="links">
      <div class="col text-center mt-3 mb-3">
@@ -39,7 +39,24 @@
 
 
     <h4>作り方</h4>
-      <p><%= form.text_area :caption %></p>
+      <div id="caption-forms" >
+        <%= form.fields_for :captions do |caption| %>
+          <% render 'caption_fields', f: caption %>
+        <% end %>
+      </div>
+
+  <div class="links">
+     <div class="col text-center mt-3 mb-3">
+        <%= link_to_add_association form, :captions, data: {
+        association_insertion_node: '#caption-forms',
+        association_insertion_method: 'append' } do %>
+          <button class="btn btn-success" >
+            <i class="nav-icon fas fa-tasks"></i> 追加
+          </button>
+        <% end %>
+     </div>
+  </div>
+
       <%= form.submit '投稿' %>
   <% end %>
 

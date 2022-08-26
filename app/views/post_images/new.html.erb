@@ -3,16 +3,6 @@
   <div class = "col-md-3"> </div>
   <div class = "col-md-9">
    <h1>レシピ投稿フォーム</h1>
-
- <% if @post_image.errors.any? %>
- <%= @post_image.errors.count %>件のエラーが発生しました
- <ul>
-  <%= @post_image.errors.full_messages.each do |message| %>
-   <li><%= message %></li>
-  <% end %>
-  </ul>
- <% end %>
-
   <%= form_with model: @post_image do |form| %>
     <h4>画像</h4>
       <p><%= form.file_field :image, accept: "image/*" %></p>
@@ -30,13 +20,12 @@
         <%= link_to_add_association form, :ingredients, data: {
         association_insertion_node: '#ingredient-forms',
         association_insertion_method: 'append' } do %>
-          <button class="btn btn-success" >
+          <button class="btn btn-outline-secondary">
             <i class="nav-icon fas fa-tasks"></i> 追加
           </button>
         <% end %>
      </div>
   </div>
-
 
     <h4>作り方</h4>
       <div id="caption-forms" >
@@ -50,17 +39,14 @@
         <%= link_to_add_association form, :captions, data: {
         association_insertion_node: '#caption-forms',
         association_insertion_method: 'append' } do %>
-          <button class="btn btn-success" >
+          <button class="btn btn-outline-secondary " >
             <i class="nav-icon fas fa-tasks"></i> 追加
           </button>
         <% end %>
      </div>
   </div>
-
-      <%= form.submit '投稿' %>
+  <%= form.submit '投稿' %>
   <% end %>
-
   </div>
-
 </div>
 </div>

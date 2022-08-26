@@ -13,8 +13,6 @@ class UsersController < ApplicationController
     @post_image = PostImage.new
     @user = current_user
     @users = User.all
-    p '-----'
-    p current_user
     #@user = User.find(params[:id])
     @post_images = current_user.post_images
   end

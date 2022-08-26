@@ -8,7 +8,6 @@ class Admins::UsersController < ApplicationController
   end
 
   def show
-    #favorites
      @user = User.find(params[:id])
      favorites= Favorite.where(user_id: @user.id).pluck(:post_image_id)
      @favorite_post_images = PostImage.find(favorites)
@@ -29,6 +28,14 @@ class Admins::UsersController < ApplicationController
     render:edit
     end
   end
+
+   def destroy
+     @user = User.find(params[:id])
+     if @user.destroy
+       redirect_to admins_users_path# データ（レコード）を削除
+     else
+     end
+   end
 
   def favorites
     @user = User.find(params[:id])

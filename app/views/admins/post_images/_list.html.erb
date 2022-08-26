@@ -13,7 +13,7 @@
        <% @post_images.each do |post_image| %>
        <tr>
         <td>
-         <%= link_to admins_post_image_path(:admin, post_image.id) do %>s
+         <%= link_to admins_post_image_path(:admin, post_image.id) do %>
           <%= image_tag post_image.get_image, :size =>'100x100' %>
          <% end %>
         </td>
@@ -22,13 +22,13 @@
          <td><%= post_image.user.name %><%= image_tag post_image.user.get_profile_image(50,50) %></td>
          <td>作り方:<%= post_image.caption %></td>
                               <%# byebug %>
-         <td>
+         <td><%# if current_user.own?(post_image) %>
               <%#= link_to "削除",post_image_path(@post_image_id),method: :delete %>
               ♥<%= post_image.favorites.count %>いいね
            <% end %>
 
          </td>
-         <td><%= link_to "#{post_image.post_comments.count} コメント",admins_post_image_path(post_image.id) %></td>
+         <td><%= link_to "#{post_image.post_comments.count} コメント",admins_post_image_path(:admin, post_image.id) %></td>
        </tr>
        <% end %>
      </table>

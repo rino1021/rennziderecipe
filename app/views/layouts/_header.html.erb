@@ -33,8 +33,13 @@
 
 
         <% elsif admin_signed_in? %>
-        <%= link_to "Admin Log out", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>
+        <%= link_to 'HOME',admins_home_top_path,class: 'nav-link text-dark' %>
 
+        <%= link_to 'User一覧',admins_users_path,class: 'nav-link text-dark' %>
+
+        <%= link_to '投稿一覧',admins_post_images_path,class: 'nav-link text-dark' %>
+
+        <%= link_to "Admin Log out", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>
         <% else %>
         <%= link_to 'レンジdeレシピ', users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
 

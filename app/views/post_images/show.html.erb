@@ -4,13 +4,17 @@
   <div class = "col-md-3">
    <%= image_tag @post_image.image, :size =>'200x200' %>
    <p><%= @post_image.recipe_name %></p>
-   
+   <p>材料:
    <% @post_image.ingredients.each do |ingredient| %>
-     <p><%= ingredient.name %></p>
+     <%= ingredient.name %>
    <% end %>
+   </p>
+   <p>作り方:
+    <% @post_image.captions.each do |caption| %>
+     <%= caption.caption %>
+   <% end %>
+   </p>
 
-   <p>材料:<%#= @post_image.ingredient %></p>
-   <p>作り方:<%#= @post_image.caption %></p>
 
   </div>
   <div class = "col-md-4">
@@ -25,7 +29,7 @@
     <% else %>
    <% end %>
 
-   <%#= render 'relationships/relationship' %>
+   <%= render 'relationships/relationship' %>
    <%#= render 'favorites/favorite' %>
    <div id="favorite_btn_<%= @post_image.id %>"><%= render partial: 'favorites/favorite',locals: {post_image: @post_image} %></div>
 

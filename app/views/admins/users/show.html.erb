@@ -42,7 +42,7 @@
     <tbody>
    <% @favorite_post_images.each do |post_image|%>
     <tr>
-     <td><%= link_to admins_post_image_path(:admin, post_image.id) do %>
+     <td><%= link_to admins_post_image_path(:admin,post_image.id) do %>
           <%= image_tag post_image.get_image, :size =>'100x100' %>
           <% end %>
      </td>
@@ -74,7 +74,7 @@
        <% @post_images.each do |post_image| %>
        <tr>
         <td>
-         <%= link_to admins_post_image_path(:admin, post_image.id) do %>
+         <%= link_to admins_post_image_path(post_image.id) do %>
           <%= image_tag post_image.get_image, :size =>'100x100' %>
          <% end %>
         </td>

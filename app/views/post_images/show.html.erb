@@ -4,20 +4,20 @@
   <div class = "col-md-3">
    <%= image_tag @post_image.image, :size =>'200x200' %>
    <p><%= @post_image.recipe_name %></p>
-   <p>材料:
+   <p>材料:</p>
    <% @post_image.ingredients.each do |ingredient| %>
-     <%= ingredient.name %>
+     <p><%= ingredient.name %>
    <% end %>
-   </p>
-   <p>作り方:
+
+   <p>作り方:</p>
     <% @post_image.captions.each do |caption| %>
-     <%= caption.caption %>
+    <p><%= caption.caption %></p>
    <% end %>
    </p>
 
 
   </div>
-  <div class = "col-md-4">
+  <div class = "col-md-6">
    <p><%#= @post_image.user.name %><%#= image_tag @post_image.user.get_profile_image(100,100) %></p>
    <p><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
     <% if @post_image.user == current_user %>
@@ -52,8 +52,6 @@
     <%= f.submit "投稿" %>
    <% end %>
    </div>
-
-<div class = "col-md-2"></div>
 </div>
 </div>
 </div>

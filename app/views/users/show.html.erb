@@ -1,12 +1,14 @@
 <!--ユーザーの詳細-->
 <div class="container">
  <div class="row">
-  <div class = "col-md-3"><%= render 'users/list',user: @user,post_image: @post_image %>
+  <div class = "col-md-3">
+   <%= render 'users/list',user: @user,post_image: @post_image %>
    </div>
   <div class = "col-md-9">
    <%= render 'users/favorites',user: @user,favorite_post_images: @favorite_post_images %>
    <!--ユーザーの投稿一覧-->
    <%= render 'post_images/list',post_images: @post_images %>
+
   </div>
   </div>
  </div>

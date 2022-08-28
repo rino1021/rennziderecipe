@@ -4,17 +4,16 @@
   <div class = "col-md-3">
    <%= image_tag @post_image.image, :size =>'200x200' %>
    <p><%= @post_image.recipe_name %></p>
-   <p>材料:</p>
+   <p>材料</p>
    <% @post_image.ingredients.each do |ingredient| %>
      <p><%= ingredient.name %>
    <% end %>
 
-   <p>作り方:</p>
+   <p>作り方</p>
     <% @post_image.captions.each do |caption| %>
     <p><%= caption.caption %></p>
    <% end %>
    </p>
-
 
   </div>
   <div class = "col-md-6">
@@ -30,11 +29,10 @@
    <% end %>
 
    <%= render 'relationships/relationship' %>
-   <%#= render 'favorites/favorite' %>
    <div id="favorite_btn_<%= @post_image.id %>"><%= render partial: 'favorites/favorite',locals: {post_image: @post_image} %></div>
 
-  <p><%= @post_image.post_comments.count %>コメント</p>
-  <% @post_image.post_comments.each do |post_comment| %>
+   <p><%= @post_image.post_comments.count %>コメント</p>
+   <% @post_image.post_comments.each do |post_comment| %>
       <p><%= image_tag post_comment.user.get_profile_image(10,10) %>
       <%= post_comment.user.name %>
       <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %></p>
@@ -44,14 +42,14 @@
       <%= link_to "削除",post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %>
       <% else %>
       <% end %>
-  <% end %>
+   <% end %>
 
-
-   <div><%= form_with model:[@post_image, @post_comment] do |f| %>
+   <div>
+    <%= form_with model:[@post_image, @post_comment] do |f| %>
     <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
     <%= f.submit "投稿" %>
-   <% end %>
-   </div>
+    <% end %>
+</div>
 </div>
 </div>
 </div>

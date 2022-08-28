@@ -14,18 +14,17 @@
           <% render 'ingredient_fields', f: ingredient %>
         <% end %>
       </div>
-
-  <div class="links">
-     <div class="col text-center mt-3 mb-3">
-        <%= link_to_add_association form, :ingredients, data: {
-        association_insertion_node: '#ingredient-forms',
-        association_insertion_method: 'append' } do %>
-          <button class="btn btn-outline-secondary">
-            <i class="nav-icon fas fa-tasks"></i> 追加
-          </button>
-        <% end %>
-     </div>
-  </div>
+      <div class="links">
+         <div class="col text-center mt-3 mb-3">
+            <%= link_to_add_association form, :ingredients, data: {
+            association_insertion_node: '#ingredient-forms',
+            association_insertion_method: 'append' } do %>
+              <button class="btn btn-outline-secondary">
+                <i class="nav-icon fas fa-tasks"></i> 追加
+              </button>
+            <% end %>
+         </div>
+      </div>
 
     <h4>作り方</h4>
       <div id="caption-forms" >
@@ -33,18 +32,17 @@
           <% render 'caption_fields', f: caption %>
         <% end %>
       </div>
-
-  <div class="links">
-     <div class="col text-center mt-3 mb-3">
-        <%= link_to_add_association form, :captions, data: {
-        association_insertion_node: '#caption-forms',
-        association_insertion_method: 'append' } do %>
-          <button class="btn btn-outline-secondary " >
-            <i class="nav-icon fas fa-tasks"></i> 追加
-          </button>
-        <% end %>
-     </div>
-  </div>
+      <div class="links">
+         <div class="col text-center mt-3 mb-3">
+            <%= link_to_add_association form, :captions, data: {
+            association_insertion_node: '#caption-forms',
+            association_insertion_method: 'append' } do %>
+              <button class="btn btn-outline-secondary " >
+                <i class="nav-icon fas fa-tasks"></i> 追加
+              </button>
+            <% end %>
+         </div>
+      </div>
   <%= form.submit '投稿' %>
   <% end %>
   </div>

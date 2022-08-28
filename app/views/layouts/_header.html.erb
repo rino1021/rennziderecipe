@@ -8,9 +8,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-
         <% if user_signed_in? %>
-
         <%= link_to root_path, class: 'nav-link text-dark' do %>
          レンジdeレシピ
         <% end %>
@@ -22,8 +20,6 @@
         <%= link_to "Recipe",post_images_path, class: 'nav-link text-dark' %>
 
         <%= link_to "User",users_path, class: 'nav-link text-dark' %>
-
-        <%#= link_to "Post",new_post_image_path, class: 'nav-link text-dark' %>
 
         <%= link_to "Mypage",user_path(current_user.id), class: 'nav-link text-dark' %>
 
@@ -40,7 +36,9 @@
         <%= link_to '投稿一覧',admins_post_images_path,class: 'nav-link text-dark' %>
 
         <%= link_to "Admin Log out", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>
+
         <% else %>
+
         <%= link_to 'レンジdeレシピ', users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
 
         <%= link_to 'Guest', users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
@@ -49,15 +47,9 @@
 
         <%= link_to "Login",new_user_session_path, class: 'nav-link text-dark' %>
 
-         <%= link_to 'AdminLogin', new_admin_session_path, class: 'nav-link text-dark' %>
+        <%= link_to 'AdminLogin', new_admin_session_path, class: 'nav-link text-dark' %>
 
         <% end %>
-
-        <%# if admin_signed_in? %>
-        <%#= link_to "Admin Log out", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' %>
-        <%# else %>
-
-        <%# end %>
     </div>
   </nav>
 </header>

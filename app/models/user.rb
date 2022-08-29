@@ -9,26 +9,16 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_post_images, through: :favorites, source: :post_image
   has_one_attached :profile_image
-
-
-
   validates :introduction, length: { maximum: 50 }
-
-
-
-
   #フォローしている
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
                                                                      #自分
   #フォローされている
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
                                                                   #foreign_key=自分
-
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-
-
 
   # フォローしたときの処理
     def follow(user_id)
@@ -50,10 +40,7 @@ class User < ApplicationRecord
     end
 
     def favorited_by?(post_image)
-      #if post_image_id == current_user.post_image_id
       favorites.where(post_image_id: post_image_id).exists?
-      #else
-      #end
     end
 
   # 検索方法分岐

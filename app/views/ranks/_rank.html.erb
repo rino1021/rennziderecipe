@@ -1,22 +1,24 @@
-
-
-<p><% @post_image_favorite_ranks.each.with_index(1) do |post_image,i| %>
-  第<%= i %>位
- 　<%= link_to post_image_path(post_image.id) do %>
-   <%= image_tag post_image.get_image, :size =>'100x100' %>
-   <% end %>
-   <%= post_image.recipe_name %>
-
-   <% if post_image.favorited_by?(current_user) %>
-     <%= link_to post_image_favorites_path(post_image),method: :delete do %>
-      ♥<%= post_image.favorites.count %>いいね
-     <% end %>
-   <% else %>
-     <%= link_to post_image_favorites_path(post_image),method: :post do %>
-      ♡<%= post_image.favorites.count %>いいね
-     <% end %>
-   <% end %>
-
-     <%= link_to "#{post_image.post_comments.count} コメント",post_image_path(post_image.id) %>
-</p><% end %>
+<table class='table table-hover table-inverse'>
+  <thead>
+   <tr>
+     <th><i class="fas fa-crown"></i>Ranking</th>
+     <th></th>
+     <th></th>
+     <th></th>
+     <th></th>
+     <th></th>
+    </tr>
+   </thead>
+    <tbody>
+      <% @post_image_favorite_ranks.each.with_index(1) do |post_image,i| %>
+      <tr><td>第<%= i %>位</td>
+    　     <td><%= link_to post_image_path(post_image.id) do %>
+              <%= image_tag post_image.get_image, :size =>'100x100' %>
+              <% end %>
+          </td>
+          <td><%= post_image.recipe_name %></td>
+          <td><div id display:inline;="favorite_btn_<%= post_image.id %>"><%= render partial: 'favorites/favorite',locals: {post_image: post_image} %></div></td>
+          <td><%= link_to "#{post_image.post_comments.count} コメント",post_image_path(post_image.id) %></td>
+      </tr>
+      <% end %>
 

@@ -7,11 +7,8 @@
     <% end %>
    </div>
   <div class = "col-md-9">
-
     <!--ユーザーの投稿一覧-->
-
     <% if user_signed_in? %>
-    <h3><i class="fas fa-crown"></i>Ranking</h3>
    <%= render 'ranks/rank',rank: @post_image_favorite_ranks,post_image: @post_images %>
    <%= render 'post_images/list' %>
    <% else %>
@@ -28,10 +25,7 @@
    <p>電子レンジでだけで簡単に作れるレシピ投稿サイト<br>
    <strong>レンジdeレシピ</strong><br>
    <p>簡単<%= link_to 'ログイン', users_guest_sign_in_path, method: :post %>で今日のご飯を決めちゃいましょ!</p>
-
-
    <% end %>
-
    </div>
   </div>
 </div>

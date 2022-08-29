@@ -29,11 +29,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-     @user = User.find(params[:id])
-     if @user.destroy
-      redirect_to users_path
-     else
-     end
+    @user = User.find(params[:id])
+    if @user.destroy
+     redirect_to users_path
+    else
+    end
   end
 
   def favorites

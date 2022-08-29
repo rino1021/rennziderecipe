@@ -1,12 +1,15 @@
+<!--レシピ投稿詳細画面-->
 <div class="container">
  <div class="row">
   <div class = "col-md-3"><%= render 'users/list',user: @user,post_image: @post_image %> </div>
   <div class = "col-md-3">
+   <!--レシピ画像-->
    <%= image_tag @post_image.image, :size =>'200x200' %>
+   <!--レシピ名-->
    <p><%= @post_image.recipe_name %></p>
    <p><材料></p>
    <% @post_image.ingredients.each do |ingredient| %>
-     <p><%= ingredient.name %>
+     <p><%= ingredient.name %></p>
    <% end %>
 
    <p><作り方></p>
@@ -18,6 +21,7 @@
   </div>
   <div class = "col-md-6">
    <p><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+
     <% if @post_image.user == current_user %>
      <%= link_to "削除",post_image_path(@post_image.id),method: :delete %>
      <%= link_to "編集",edit_post_image_path(@post_image.id) %>
@@ -33,22 +37,24 @@
    <p><%= @post_image.post_comments.count %>コメント</p>
       <% @post_image.post_comments.each do |post_comment| %>
       <p><%= image_tag post_comment.user.get_profile_image(10,10) %>
-      <%= post_comment.user.name %>
-      <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %></p>
+         <%= post_comment.user.name %>
+         <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+      </p>
       <% if post_comment.user == current_user %>
-      <%= link_to "削除",post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %>
+       <%= link_to "削除",post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %>
       <% elsif current_user.admin? && !(current_user == @user) %>
-      <%= link_to "削除",post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %>
+       <%= link_to "削除",post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %>
       <% else %>
       <% end %>
-   <% end %>
+      <% end %>
 
    <div>
+    <!--コメント投稿-->
     <%= form_with model:[@post_image, @post_comment] do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-    <%= f.submit "投稿" %>
+      <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+      <%= f.submit "投稿" %>
     <% end %>
-</div>
-</div>
-</div>
+   </div>
+  </div>
+ </div>
 </div>

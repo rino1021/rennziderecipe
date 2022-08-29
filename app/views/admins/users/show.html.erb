@@ -29,7 +29,7 @@
   </div>
 
   <div class = "col-md-9">
-    <% if @post_images.exists? %>
+   <% if @post_images.exists? %>
    <table class='table table-hover table-inverse'>
     <thead>
     <tr>
@@ -40,25 +40,23 @@
     </tr>
     </thead>
     <tbody>
-   <% @favorite_post_images.each do |post_image|%>
-    <tr>
-     <td><%= link_to admins_post_image_path(:admin,post_image.id) do %>
-          <%= image_tag post_image.get_image, :size =>'100x100' %>
-          <% end %>
-     </td>
-     <td><%= post_image.recipe_name %></td>
-     <td><%= post_image.user.name %><%= image_tag post_image.user.get_profile_image(50,50) %></td>
-     <td>作り方:<%= post_image.caption %></td>
-     <td><%= link_to "#{post_image.post_comments.count} コメント",admins_post_image_path(:admin,post_image.id) %></td>
-    </tr>
-    </tbody>
+   　<% @favorite_post_images.each do |post_image|%>
+    　<tr>
+      <td><%= link_to admins_post_image_path(:admin,post_image.id) do %>
+           <%= image_tag post_image.get_image, :size =>'100x100' %>
+           <% end %>
+      </td>
+      <td><%= post_image.recipe_name %></td>
+      <td><%= post_image.user.name %><%= image_tag post_image.user.get_profile_image(50,50) %></td>
+      <td>作り方:<%= post_image.caption %></td>
+      <td><%= link_to "#{post_image.post_comments.count} コメント",admins_post_image_path(:admin,post_image.id) %></td>
+     </tr>
+     </tbody>
     <% end %>
  </table>
 <% else %>
 <% end %>
-   <%#= render 'users/favorites',user: @user,favorite_post_images: @favorite_post_images %>
-   <!--ユーザーの投稿一覧-->
-   <table class='table table-hover table-inverse'>
+  <table class='table table-hover table-inverse'>
   <thead>
    <tr>
      <th>投稿一覧</th>

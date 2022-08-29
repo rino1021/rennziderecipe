@@ -29,7 +29,7 @@ class Admins::UsersController < ApplicationController
   def destroy
      @user = User.find(params[:id])
      if @user.destroy
-      redirect_to admins_users_path# データ（レコード）を削除
+      redirect_to admins_users_path
     else
     end
   end

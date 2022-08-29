@@ -18,7 +18,8 @@ class PostImagesController < ApplicationController
 
  def index
    @post_images = PostImage.all
-   @post_image = PostImage.page(params[:page])
+   @post_images = PostImage.all.order(created_at: :desc)
+   #@post_image = PostImage.page(params[:page])
    @user = current_user
 
  end

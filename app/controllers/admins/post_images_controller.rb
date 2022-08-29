@@ -1,8 +1,9 @@
 class Admins::PostImagesController < ApplicationController
   def index
    @post_images = PostImage.all
-   @post_image = PostImage.page(params[:page])
-   #@user = current_user
+   @post_images = PostImage.all.order(created_at: :desc)
+   #@post_image = PostImage.page(params[:page])
+
   end
 
   def show

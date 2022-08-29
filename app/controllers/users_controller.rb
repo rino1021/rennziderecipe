@@ -1,19 +1,17 @@
 class UsersController < ApplicationController
   before_action :current_user, only: [:edit,:update,:favorites]
   def show
-    #favorites
-     @user = User.find(params[:id])
-     favorites= Favorite.where(user_id: @user.id).pluck(:post_image_id)
-     @favorite_post_images = PostImage.find(favorites)
-     @post_images = @user.post_images
-
+    @user = User.find(params[:id])
+    favorites= Favorite.where(user_id: @user.id).pluck(:post_image_id)
+    @favorite_post_images = PostImage.find(favorites)
+    @post_images = @user.post_images
   end
 
   def index
     @post_image = PostImage.new
     @user = current_user
     @users = User.all
-    #@user = User.find(params[:id])
+    @users = User.all.order(created_at: :desc)
     @post_images = current_user.post_images
   end
 
@@ -23,19 +21,17 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    #@user.update(user_params)
-    #redirect_to user_path
     if@user.update(user_params)
-    redirect_to user_path(@user.id),notice:"You have updated user successfully."
+     redirect_to user_path(@user.id),notice:"You have updated user successfully."
     else
-    render:edit
+     render:edit
     end
   end
 
   def destroy
      @user = User.find(params[:id])
      if @user.destroy
-       redirect_to users_path# データ（レコード）を削除
+      redirect_to users_path
      else
      end
   end
@@ -44,11 +40,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     favorites= Favorite.where(user_id: @user.id).pluck(:post_image_id)
     @favorite_post_images = PostImage.find(favorites)
-    #@post_imags = @user.post_image
   end
 
   private
-
   def user_params
     params.require(:user).permit(:name,:profile_image,:introduction)
   end

@@ -48,7 +48,6 @@
         <p><%= form.submit '投稿' %></p>
     <% if @post_image.user == current_user %>
     <%= link_to "Show",post_image_path(@post_image.id) %>
-    |
     <%= link_to "Back",post_images_path(@post_image.id) %>
     <% else %>
     <% end %>
